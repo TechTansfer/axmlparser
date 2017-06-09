@@ -1,19 +1,3 @@
-/**
- * Copyright 2014 Ryszard Wiśniewski <brut.alll@gmail.com>
- * <p>
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * <p>
- * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.shazam.axmlparser;
 
 import java.io.IOException;
@@ -25,20 +9,12 @@ import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * @author Ryszard Wiśniewski brut.alll@gmail.com
- * @author Dmitry Skiba
- *
- *         Block of strings, used in binary xml and arsc.
- *
- *         TODO: - implement get()
- *
- */
 public class StringBlock {
 
     /**
      * Reads whole (including chunk type) string block from stream.
      * Stream must be at the chunk type.
+     *
      * @param reader the int reader
      * @return the string block from stream
      * @throws IOException when string or style data size is not multiple of 4
@@ -86,6 +62,7 @@ public class StringBlock {
 
     /**
      * Returns number of strings in block.
+     *
      * @return the number of strings
      */
     public int getCount() {
@@ -129,6 +106,7 @@ public class StringBlock {
 
     /**
      * Returns string with style tags (html-like).
+     *
      * @param index the index of style tags
      * @return the style tag
      */
@@ -240,6 +218,7 @@ public class StringBlock {
 
     /**
      * Finds index of the string.
+     *
      * @param string the string to find
      * @return -1 if the string was not found or the index
      */
@@ -273,9 +252,9 @@ public class StringBlock {
     /**
      * Returns style information - array of int triplets,
      * where in each triplet:
-     * 	* first int is index of tag name ('b','i', etc.)
-     * 	* second int is tag start index in string
-     * 	* third int is tag end index in string
+     * * first int is index of tag name ('b','i', etc.)
+     * * second int is tag start index in string
+     * * third int is tag end index in string
      */
     private int[] getStyle(int index) {
         if (m_styleOffsets == null || m_styles == null || index >= m_styleOffsets.length) {

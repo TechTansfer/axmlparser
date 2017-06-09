@@ -1,19 +1,3 @@
-/**
- *  Copyright 2014 Ryszard Wiśniewski <brut.alll@gmail.com>
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *       http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- */
-
 package com.shazam.axmlparser;
 
 import org.apache.commons.lang3.StringUtils;
@@ -22,9 +6,6 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Ryszard Wiśniewski brut.alll@gmail.com
- */
 public final class ResXmlEncoders {
 
     public static String escapeXmlChars(String str) {
@@ -142,7 +123,7 @@ public final class ResXmlEncoders {
 
     public static boolean hasMultipleNonPositionalSubstitutions(String str) {
         Duo<List<Integer>, List<Integer>> tuple = findSubstitutions(str, 3);
-        return ! tuple.m1.isEmpty() && tuple.m1.size() + tuple.m2.size() > 1;
+        return !tuple.m1.isEmpty() && tuple.m1.size() + tuple.m2.size() > 1;
     }
 
     public static String enumerateNonPositionalSubstitutionsIfRequired(String str) {
@@ -166,8 +147,8 @@ public final class ResXmlEncoders {
 
     /**
      * It returns a tuple of:
-     *   - a list of offsets of non positional substitutions. non-pos is defined as any "%" which isn't "%%" nor "%\d+\$"
-     *   - a list of offsets of positional substitutions
+     * - a list of offsets of non positional substitutions. non-pos is defined as any "%" which isn't "%%" nor "%\d+\$"
+     * - a list of offsets of positional substitutions
      */
     private static Duo<List<Integer>, List<Integer>> findSubstitutions(String str, int nonPosMax) {
         if (nonPosMax == -1) {
@@ -195,7 +176,7 @@ public final class ResXmlEncoders {
                 continue;
             }
             if (c >= '0' && c <= '9' && pos2 < length) {
-                while ((c = str.charAt(pos2++)) >= '0' && c <= '9' && pos2 < length);
+                while ((c = str.charAt(pos2++)) >= '0' && c <= '9' && pos2 < length) ;
                 if (c == '$') {
                     positional.add(pos);
                     continue;
