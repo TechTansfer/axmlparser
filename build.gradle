@@ -1,0 +1,30 @@
+group GROUP
+version VERSION_NAME
+
+apply plugin: 'java'
+apply from: 'scripts/gradle-mvn-push.gradle'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile(
+            "com.google.guava:guava:19.0",
+            "org.apache.commons:commons-lang3:3.4"
+    )
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': POM_NAME,
+                'Implementation-Version': VERSION_NAME,
+                'Built-By': System.getProperty('user.name'),
+                'Built-Date': new Date(),
+                'Built-JDK': System.getProperty('java.version'),
+                'Built-Gradle': gradle.gradleVersion
+    }
+}
